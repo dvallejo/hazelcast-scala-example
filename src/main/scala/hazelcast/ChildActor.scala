@@ -8,6 +8,11 @@ import Messages._
 
 import scala.collection.JavaConversions._
 
+/**
+  * Child is a hazelcast client. 
+  * Obtains the shopping list map and reads it.
+  */
+
 class ChildActor extends Actor {
 
   val hazelcastClient = HazelcastClient.newHazelcastClient(new ClientConfig())
@@ -23,7 +28,6 @@ class ChildActor extends Actor {
 }
 
 object ChildActor {
-
 	def props = Props[ChildActor]
 }
 

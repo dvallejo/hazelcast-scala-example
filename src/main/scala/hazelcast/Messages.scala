@@ -1,5 +1,9 @@
 package hazelcast
 
+/**
+  * Messages between APIs and hazelcast actors
+  */
+
 object Messages {
 
 	case object GetItems

@@ -13,6 +13,10 @@ import spray.routing.Directives._
 
 import Messages._
 
+/**
+  * Child can get the complete list with this API
+  */
+
 class ChildApiActor extends HttpService with Actor {
 
 	val child = context.actorOf(ChildActor.props)

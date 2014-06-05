@@ -7,6 +7,10 @@ import spray.routing.Directives._
 
 import Messages._
 
+/**
+  * Mom can add and remove items with this API
+  */
+
 class MomApiActor extends HttpService with Actor {
 
 	val mom = context.actorOf(MomActor.props)
