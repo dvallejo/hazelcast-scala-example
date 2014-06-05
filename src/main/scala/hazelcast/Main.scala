@@ -21,6 +21,6 @@ object Main extends App {
 
   val childApi = system.actorOf(ChildApiActor.props)
 
-  IO(Http) ! Http.Bind(childApi, interface = "0.0.0.0", port = 6000)
+  IO(Http) ! Http.Bind(childApi, interface = "0.0.0.0", port = 9000)
 
 }
