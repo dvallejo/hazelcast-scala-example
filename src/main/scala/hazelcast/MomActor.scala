@@ -29,6 +29,6 @@ class MomActor extends Actor {
 }
 
 object MomActor {
-	def props = Props[MomActor]
+  def props = Props[MomActor]
 }
 

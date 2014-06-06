@@ -20,36 +20,36 @@ import Messages._
 
 class ApiActor extends HttpService with Actor {
 
-	val mom = context.actorOf(MomActor.props)
-	val child = context.actorOf(ChildActor.props)
+  val mom = context.actorOf(MomActor.props)
+  val child = context.actorOf(ChildActor.props)
 
-	def actorRefFactory = context
+  def actorRefFactory = context
 
-	implicit val timeout = Timeout(3 seconds)
+  implicit val timeout = Timeout(3 seconds)
 
-	def receive = runRoute(
-		  path("mom" / "list" / "(.+)".r) { item =>
-	     	parameter("n") { amount =>
-		     	post {
-		     			mom ! AddItem(item, amount.toInt)
-		     			complete("OK, mum")
-	     		}
-	     	} ~
-	   		delete {
-	   				mom ! RemoveItem(item)
-	   				complete("OK, mum")
-	   		}
-		  } ~ path("child" / "list") {
-				  	get {
-			      	complete(
-			      		(child ? GetItems).mapTo[String]
-			    		)
-				  	}
-				  }
-		)
+  def receive = runRoute(
+      path("mom" / "list" / "(.+)".r) { item =>
+        parameter("n") { amount =>
+          post {
+              mom ! AddItem(item, amount.toInt)
+              complete("OK, mum")
+          }
+        } ~
+        delete {
+            mom ! RemoveItem(item)
+            complete("OK, mum")
+        }
+      } ~ path("child" / "list") {
+            get {
+              complete(
+                (child ? GetItems).mapTo[String]
+              )
+            }
+          }
+    )
 
 }
 
 object ApiActor {
-	def props = Props[ApiActor]
+  def props = Props[ApiActor]
 }
