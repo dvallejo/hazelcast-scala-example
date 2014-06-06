@@ -6,8 +6,8 @@ import spray.can.Http
 
 /**
   * Initiates two spray-akka systems:
-  * - A hazelcast server in 0.0.0.0:5000/list/mom: the mother
-  * - A hazelcast client in 0.0.0.0:5000/list/child: the child
+  * - A hazelcast server in 0.0.0.0:5000/mom: the mother
+  * - A hazelcast client in 0.0.0.0:5000/child: the child
   *
   */
 

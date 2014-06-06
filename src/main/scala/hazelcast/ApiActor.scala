@@ -28,27 +28,24 @@ class ApiActor extends HttpService with Actor {
 	implicit val timeout = Timeout(3 seconds)
 
 	def receive = runRoute(
-			pathPrefix("list") { 
-			  path("mom" / "(.+)".r) { item =>
-		     	parameter("n") { amount =>
-			     	post {
-			     			mom ! AddItem(item, amount.toInt)
-			     			complete("OK, mum")
-		     		}
-		     	} ~
-	     		delete {
-	     				mom ! RemoveItem(item)
-	     				complete("OK, mum")
+		  path("mom" / "list" / "(.+)".r) { item =>
+	     	parameter("n") { amount =>
+		     	post {
+		     			mom ! AddItem(item, amount.toInt)
+		     			complete("OK, mum")
 	     		}
-			  } ~ 
-			  path("child") {
-			  	get {
-		      	complete(
-		      		(child ? GetItems).mapTo[String]
-	      		)
-			  	}
-			  }
-			}
+	     	} ~
+	   		delete {
+	   				mom ! RemoveItem(item)
+	   				complete("OK, mum")
+	   		}
+		  } ~ path("child" / "list") {
+				  	get {
+			      	complete(
+			      		(child ? GetItems).mapTo[String]
+			    		)
+				  	}
+				  }
 		)
 
 }
