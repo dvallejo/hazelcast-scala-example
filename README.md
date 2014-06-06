@@ -49,8 +49,19 @@ Finally, the items of the map can be extracted by means of their keys and corres
 
 An API has been created for testing the functionality of the example: ApiActor.
 
-For simulating the behaviour of the child and reading the shopping list, you can access to the URL 0.0.0.0:5000/child/list
+For simulating the behaviour of the child and reading the shopping list, you can access to the URL :
+```
+0.0.0.0:5000/child/list
+```
 
-For simulating the addition of an element (done by the mother instance), a POST request must be performed. For example, if you want to add three oranges, you should send a POST request to 0.0.0.0:5000/mom/list/orange?n=3
+For simulating the addition of an element (done by the mother instance), a POST request must be performed. For example, if you want to add three oranges, you should send a POST request to:
 
-For simulating the removal of all the items of a product (all oranges, all apples...), a DELETE request must be performed to 0.0.0.0:5000/mom/list/product_name, where product_name is substituted by the name of the product (apple, orange...)
+```
+0.0.0.0:5000/mom/list/orange?n=3
+```
+
+For simulating the removal of all the items of a product (all oranges, all apples...), a DELETE request must be performed to :
+```
+0.0.0.0:5000/mom/list/product_name
+```
+where product_name is substituted by the name of the product (apple, orange...)
